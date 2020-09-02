@@ -1,0 +1,14 @@
+<mat-sidenav-container autosize>
+  <mat-sidenav mode="side" opened>
+    <app-master [(selectedUseCase)] = 'selectedUseCase' (selectedUseCaseChange) = 'selectedUseCaseChaged($event)'></app-master>
+  </mat-sidenav>
+  <mat-sidenav-content *ngIf="selectedUseCase == 0" >
+    <app-detail-product></app-detail-product>
+  </mat-sidenav-content>
+  <mat-sidenav-content *ngIf="selectedUseCase == 1" >
+    <app-detail-rating></app-detail-rating>
+  </mat-sidenav-content>
+  <mat-sidenav-content *ngIf="selectedUseCase == 2" >
+    <app-detail-user></app-detail-user>
+  </mat-sidenav-content>
+</mat-sidenav-container>

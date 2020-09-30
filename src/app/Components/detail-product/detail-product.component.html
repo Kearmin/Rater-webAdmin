@@ -1,3 +1,12 @@
-<p>
-  detail-product works!
-</p>
+<h1>Products</h1>
+
+<table *ngFor="let product of products$ | async">
+  <tr class="flex-container">
+    <td style="width: 120px;">{{ product.name }}</td>
+    <td style="width: 80px;">{{ product.producer }}</td>
+    <td style="width: 30px;">{{ product.uploaderId }}</td>
+    <td style="width: 80px;">
+      <button (click)="onDeleteClick(product.id)">Delete</button>
+    </td>
+  </tr>
+</table>

@@ -2,13 +2,18 @@
   <mat-sidenav mode="side" opened>
     <app-master [(selectedUseCase)] = 'selectedUseCase' (selectedUseCaseChange) = 'selectedUseCaseChaged($event)'></app-master>
   </mat-sidenav>
-  <mat-sidenav-content *ngIf="selectedUseCase == 0" >
-    <app-detail-product></app-detail-product>
+
+  <mat-sidenav-content>
+    <div class="flex-container">
+      <input #searchBox id="search-box" (input)="search(searchBox.value)"/>
+      <div *ngIf="selectedUseCase == 0">
+        <app-detail-product [searchTerms]='searchTerms' ></app-detail-product>
+      </div>
+      <div *ngIf="selectedUseCase==1">
+        <app-detail-rating [searchTerms]='searchTerms' ></app-detail-rating>
+      </div>
+      <div *ngIf="selectedUseCase==2">
+        <app-detail-user [searchTerms]='searchTerms' ></app-detail-user>
+      </div>
+    </div>
   </mat-sidenav-content>
-  <mat-sidenav-content *ngIf="selectedUseCase == 1" >
-    <app-detail-rating></app-detail-rating>
-  </mat-sidenav-content>
-  <mat-sidenav-content *ngIf="selectedUseCase == 2" >
-    <app-detail-user></app-detail-user>
-  </mat-sidenav-content>
-</mat-sidenav-container>

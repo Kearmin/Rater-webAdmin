@@ -1,5 +1,6 @@
 import { UseCaseType } from '../../../Common/UseCaseType';
 import { Component, OnInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-main',
@@ -10,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainComponent implements OnInit {
 
   selectedUseCase: UseCaseType;
+  searchTerms = new Subject<string>();
 
   constructor() { }
 
@@ -20,5 +22,9 @@ export class MainComponent implements OnInit {
   selectedUseCaseChaged(newValue: UseCaseType): void {
     console.log(newValue);
     this.selectedUseCase = newValue;
+  }
+
+  search(text: string): void {
+    this.searchTerms.next(text);
   }
 }

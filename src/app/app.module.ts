@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { DetailUserComponent } from './Components/detail-user/detail-user.component';
 import { DetailRatingComponent } from './Components/detail-rating/detail-rating.component';
 import { DetailProductComponent } from './Components/detail-product/detail-product.component';
@@ -26,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     MatSidenavModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

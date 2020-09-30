@@ -1,15 +1,39 @@
-import { Component, OnInit } from '@angular/core';
+import { Product } from './../../Common/Product';
+import { ProductService } from './../../Services/product.service';
+import { Component, OnInit, Input, AfterViewInit } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import {
+  debounceTime, switchMap
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-detail-product',
   templateUrl: './detail-product.component.html',
   styleUrls: ['./detail-product.component.scss']
 })
-export class DetailProductComponent implements OnInit {
+export class DetailProductComponent implements OnInit, AfterViewInit {
 
-  constructor() { }
+  products$: Observable<Product[]>;
+  @Input() searchTerms: Subject<string>;
 
-  ngOnInit() {
+  constructor(private productService: ProductService) { }
+
+  ngOnInit(): void {
+    this.products$ = this.searchTerms.pipe(
+      debounceTime(300),
+      switchMap((term: string) => this.productService.getProducts(term))
+    );
   }
 
+  ngAfterViewInit(): void {
+    this.searchTerms.next();
+  }
+
+  onDeleteClick(id: number): void {
+    this.productService.deleteProduct(id).subscribe( _ => {
+      console.log('deleted id: ' + id);
+      this.searchTerms.next('');
+    }
+    );
+  }
 }

@@ -1,3 +1,7 @@
-<p>
-  detail-user works!
-</p>
+<h1> Ratings </h1>
+
+<ul class="search-result">
+  <li *ngFor="let user of users$ | async">
+      {{ user.accountName }}
+  </li>
+</ul>

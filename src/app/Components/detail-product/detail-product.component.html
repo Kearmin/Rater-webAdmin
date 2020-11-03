@@ -1,7 +1,11 @@
-<h1>Products</h1>
-
-<table *ngFor="let product of products$ | async">
-  <tr class="flex-container">
+<table class="column-options">
+  <tr>
+    <th>Name</th>
+    <th>Producer</th>
+    <th>UploaderId</th>
+    <th></th>
+  </tr>
+  <tr *ngFor="let product of products$ | async">
     <td style="width: 120px;">{{ product.name }}</td>
     <td style="width: 80px;">{{ product.producer }}</td>
     <td style="width: 30px;">{{ product.uploaderId }}</td>

@@ -21,5 +21,11 @@ export interface Rating {
 export interface User {
   id: number;
   accountName: string;
-  // password: string;
+  password: string;
 }
+
+export interface Token {
+  id: string;
+  value: string;
+}
+

@@ -1,0 +1,11 @@
+
+<h1 class="title">
+  RATER
+</h1>
+<div class="content">
+  <table>
+    <tr><input #accountNameInput type="text"  placeholder="Account Name" (change)="accountTextChanged(accountNameInput.value)"/></tr>
+    <tr><input #passwordInput type="password"  placeholder="Password" (change)="passwordTextChanged(passwordInput.value)"/></tr>
+    <tr><button mat-button (click)="checkFields()" >Login</button></tr>
+  </table>
+</div>

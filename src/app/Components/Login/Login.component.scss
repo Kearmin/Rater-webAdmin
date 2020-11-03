@@ -1,0 +1,41 @@
+.content {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border-color: #00b7ff;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 30px;
+  padding: 20px 20px 20px 20px;
+}
+
+table {
+  border-spacing: 20px;
+}
+
+input {
+  width: 300px;
+  height: 50px;
+  font-size: large;
+}
+
+button {
+  margin-left: 75px;
+  width: 170px;
+  height: 50px;
+  border-radius: 30px;
+  font-size: larger;
+}
+
+.title {
+  font-family: "Brush Script MT";
+  font-size: 100px;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  color: #00b7ff;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}

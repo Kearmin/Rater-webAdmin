@@ -18,13 +18,20 @@ export class DetailRatingComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.ratings$ = this.searchTerms.pipe(
-      debounceTime(300),
+      debounceTime(500),
       distinctUntilChanged(),
-      switchMap((term: string) => this.ratingService.getProducts(term))
+      switchMap((term: string) => this.ratingService.getRatings(term))
     );
   }
 
   ngAfterViewInit(): void {
     this.searchTerms.next();
+  }
+
+  onDeleteClick(id: number): void {
+    this.ratingService.deleteRating(id).subscribe( _ => {
+      console.log('deleted rating with id: ' + id);
+      this.searchTerms.next('');
+    });
   }
 }

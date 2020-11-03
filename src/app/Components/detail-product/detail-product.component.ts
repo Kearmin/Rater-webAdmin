@@ -20,7 +20,7 @@ export class DetailProductComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.products$ = this.searchTerms.pipe(
-      debounceTime(300),
+      debounceTime(500),
       switchMap((term: string) => this.productService.getProducts(term))
     );
   }
@@ -31,7 +31,7 @@ export class DetailProductComponent implements OnInit, AfterViewInit {
 
   onDeleteClick(id: number): void {
     this.productService.deleteProduct(id).subscribe( _ => {
-      console.log('deleted id: ' + id);
+      console.log('deleted product with id: ' + id);
       this.searchTerms.next('');
     }
     );

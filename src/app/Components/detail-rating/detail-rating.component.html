@@ -1,7 +1,18 @@
-<h1> Ratings </h1>
-
-<ul class="search-result">
-  <li *ngFor="let rating of ratings$ | async">
-      {{ rating.title }}
-  </li>
-</ul>
+<table class="column-options">
+  <tr>
+    <th> Product </th>
+    <th> Title </th>
+    <th> Text </th>
+    <th> Rating </th>
+    <th> </th>
+  </tr>
+  <tr *ngFor="let rating of ratings$ | async">
+    <td>{{ rating.product.name }}</td>
+    <td>{{ rating.title }}</td>
+    <td>{{ rating.text }}</td>
+    <td>{{ rating.rating }} / 5</td>
+    <td>
+      <button (click)="onDeleteClick(rating.id)">Delete</button>
+    </td>
+  </tr>
+</table>

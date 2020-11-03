@@ -1,7 +1,14 @@
-<h1> Ratings </h1>
-
-<ul class="search-result">
-  <li *ngFor="let user of users$ | async">
-      {{ user.accountName }}
-  </li>
-</ul>
+<table class="column-options">
+  <tr>
+    <th> AccountName </th>
+    <th> Account Id </th>
+    <th>  </th>
+  </tr>
+  <tr *ngFor="let user of users$ | async">
+    <td>{{ user.accountName }}</td>
+    <td>{{ user.id }}</td>
+    <td>
+      <button (click)="onDeleteClick(user.id)">Delete</button>
+    </td>
+  </tr>
+</table>

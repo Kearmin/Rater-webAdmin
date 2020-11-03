@@ -1,19 +1,24 @@
-<mat-sidenav-container autosize>
-  <mat-sidenav mode="side" opened>
-    <app-master [(selectedUseCase)] = 'selectedUseCase' (selectedUseCaseChange) = 'selectedUseCaseChaged($event)'></app-master>
-  </mat-sidenav>
-
-  <mat-sidenav-content>
-    <div class="flex-container">
-      <input #searchBox id="search-box" (input)="search(searchBox.value)"/>
+    <table class="top">
+    <tr>
+      <td><h1 style="width: 150px"> {{ headerTitle }} </h1></td>
+        <td><fa-icon class="rowIcon" [icon]="faCarrot" size="4x" [ngStyle]="{'color': productColor}" (click)="imageClicked(0)" ></fa-icon></td>
+        <td><fa-icon class="rowIcon" [icon]="faStar" size="4x" [ngStyle]="{'color': starColor}" (click)="imageClicked(1)"></fa-icon></td>
+        <td><fa-icon class="rowIcon" [icon]="faUsers" size="4x" [ngStyle]="{'color': userColor}" (click)="imageClicked(2)"></fa-icon></td>
+        <td>
+            <input #searchBox id="search-box" placeholder="Search" (input)="search(searchBox.value)"/>
+        </td>
+        <td class="right">
+           <p *ngIf="userName !== undefined && userName != ''" class="userName"> Welcome {{ userName }}</p>
+           <button class="logoutButton" (click)="logout()" >Logout</button>
+        </td>
+    </tr>
+  </table>
       <div *ngIf="selectedUseCase == 0">
         <app-detail-product [searchTerms]='searchTerms' ></app-detail-product>
       </div>
-      <div *ngIf="selectedUseCase==1">
+      <div *ngIf="selectedUseCase == 1">
         <app-detail-rating [searchTerms]='searchTerms' ></app-detail-rating>
       </div>
-      <div *ngIf="selectedUseCase==2">
+      <div *ngIf="selectedUseCase == 2">
         <app-detail-user [searchTerms]='searchTerms' ></app-detail-user>
       </div>
-    </div>
-  </mat-sidenav-content>

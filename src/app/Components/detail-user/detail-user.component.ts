@@ -18,13 +18,24 @@ export class DetailUserComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.users$ = this.searchTerms.pipe(
-      debounceTime(300),
+      debounceTime(500),
       distinctUntilChanged(),
-      switchMap((term: string) => this.userService.getProducts(term))
+      switchMap((term: string) => this.userService.getUsers(term))
     );
   }
 
   ngAfterViewInit(): void {
-    this.searchTerms.next();
+    this.searchTerms.next('');
+  }
+
+  onDeleteClick(id: number): void {
+    this.userService.deleteUser(id).subscribe( _ => {
+      console.log('deleted user with id: ' + id);
+      this.searchTerms.next('');
+    });
+  }
+
+  search(term: string): void {
+    this.searchTerms.next(term);
   }
 }
